@@ -1,0 +1,56 @@
+[project]
+name = "stactools-ephemeral"
+version = "0.1.0"
+description = "PROVIDE DESCRIPTION HERE"
+readme = "README.md"
+authors = [{ name = "Your name here", email = "your-email@example.com" }]
+maintainers = [{ name = "Your name here", email = "your-email@example.com" }]
+keywords = ["stactools", "pystac", "catalog", "STAC"]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.9"
+dependencies = ["stactools>=0.4.0"]
+
+[project.optional-dependencies]
+dev = [
+    "black~=24.4",
+    "codespell~=2.3",
+    "mypy~=1.10",
+    "pre-commit~=4.0",
+    "pytest-cov~=6.0",
+    "pytest~=8.2",
+    "requests~=2.32",
+    "ruff==0.8.3",
+]
+docs = ["pystac~=1.10", "ipykernel~=6.29", "jinja2~=3.1"]
+
+[project.urls]
+Github = "https://github.com/stactools-packages/ephemeral"
+Issues = "https://github.com/stactools-packages/ephemeral/issues"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+explicit_package_bases = true
+namespace_packages = true
+show_error_codes = true
+strict = true
+mypy_path = "src"
+
+[tool.ruff]
+select = ["E", "F", "I"]
