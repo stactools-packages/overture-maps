@@ -20,6 +20,7 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
         --target dev-builder \
         .
     docker run --rm \
-        --entrypoint scripts/cibuild \
-        stactools-packages/overture-maps:dev
+        --entrypoint uv \
+        stactools-packages/overture-maps:dev \
+        sync
 fi
