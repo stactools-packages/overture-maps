@@ -1,4 +1,4 @@
-name: stactools-ephemeral
+name: stactools-overture-maps
 channels:
   - conda-forge
   - defaults

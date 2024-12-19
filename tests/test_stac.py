@@ -1,4 +1,4 @@
-from stactools.ephemeral import stac
+from stactools.overture_maps import stac
 
 from . import test_data
 
