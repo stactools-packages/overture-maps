@@ -29,10 +29,10 @@ def test_create_collection(theme: Theme, storage_backend: StorageBackend) -> Non
     collection.validate()
 
 
+@pytest.mark.vcr  # type: ignore
 @pytest.mark.parametrize(
     "href",
     [
-        "s3://overturemaps-us-west-2/release/2024-12-18.0/theme=buildings/type=building/part-00000-2a7085d3-4cd8-40f2-adaf-0c6d59a3b7d9-c000.zstd.parquet",
         f"{AZURE_PREFIX}/theme=addresses/type=address/part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000.zstd.parquet",
         f"{AZURE_PREFIX}/theme=buildings/type=building/part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.zstd.parquet",
         f"{AZURE_PREFIX}/theme=buildings/type=building_part/part-00000-ecfd20fa-cba1-430d-979d-d75b6d5ef6b2-c000.zstd.parquet",

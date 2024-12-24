@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import pytest
 from click import Group
 from click.testing import CliRunner
 from pystac import Collection, Item
@@ -24,6 +25,7 @@ def test_create_collection(tmp_path: Path) -> None:
     collection.validate()
 
 
+@pytest.mark.vcr  # type: ignore
 def test_create_item(tmp_path: Path) -> None:
     # Smoke test for the command line create-item command
     #
