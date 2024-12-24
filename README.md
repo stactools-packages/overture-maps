@@ -1,23 +1,76 @@
-# stactools-template
+# stactools-overture-maps
 
-This is a template repo used for creating new packages for `stactools`.
+[![PyPI](https://img.shields.io/pypi/v/stactools-overture-maps?style=for-the-badge)](https://pypi.org/project/stactools-overture-maps/)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/stactools-packages/overture-maps/continuous-integration.yml?style=for-the-badge)
 
-## How to use
+- Name: overture-maps
+- Package: `stactools.overture_maps`
+- [stactools-overture-maps on PyPI](https://pypi.org/project/stactools-overture-maps/)
+- Owner: @githubusername
+- [Dataset homepage](http://example.com)
+- STAC extensions used:
+  - [proj](https://github.com/stac-extensions/projection/)
+- Extra fields:
+  - `overture-maps:custom`: A custom attribute
+- [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/overture-maps/main/examples/collection.json)
+- [Browse a notebook demonstrating the example item and collection](https://github.com/stactools-packages/overture-maps/tree/main/docs/example.ipynb)
 
-1. Clone this template repository as your package name, e.g. `landsat`.
-   This name should be short, memorable, and a valid Python package name (i.e.
-   it shouldn't start with a number, etc). It can, however, include a hyphen, in
-   which case the name for Python imports will be the underscored version, e.g.
-   `landsat-8` goes to `stactools.landsat_8`.  Your name will be used on PyPI to
-   publish the package in the stactools namespace, e.g. `stactools-landsat`.
-2. Change into the top-level directory of your package and run `scripts/rename`.
-   This will update _most_ of the files in the repository with your new package name.
-3. Update `pyproject.toml` with your package description and such.
-4. Install with the development requirements (`uv sync`).
-5. Update the LICENSE with your company's information (or whomever holds the copyright).
-6. Edit or replace the existing functions to create stac Items and Collections
-   for your dataset.
-7. Add example Items (and Collections and Catalogs, if included) to an
-   `examples/` directory.
-8. Delete this file, and rename `README-template.md` to `README.md`. Update your
-   new README to provide information about how to use your package.
+A short description of the package and its usage.
+
+## STAC examples
+
+- [Collection](examples/collection.json)
+- [Item](examples/item/item.json)
+
+## Installation
+
+```shell
+pip install stactools-overture-maps
+```
+
+## Command-line usage
+
+Description of the command line functions
+
+```shell
+stac overture-maps create-item source destination
+```
+
+Use `stac overture-maps --help` to see all subcommands and options.
+
+## Contributing
+
+We use [pre-commit](https://pre-commit.com/) to check any changes.
+To set up your development environment:
+
+```shell
+uv sync
+uv run pre-commit install
+```
+
+To check all files:
+
+```shell
+uv run pre-commit run --all-files
+```
+
+To run the tests:
+
+```shell
+uv run pytest -vv
+```
+
+If you've updated the STAC metadata output, update the examples:
+
+```shell
+uv run scripts/update-examples
+```
+
+To update the test data:
+
+- install [`gpq`](https://github.com/planetlabs/gpq)
+- install [`duckdb`](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=linux&download_method=direct&architecture=x86_64)
+
+```bash
+scripts/generate-test-data 
+```

@@ -1,17 +1,20 @@
-from datetime import datetime, timezone
-
 from pystac import (
     Collection,
-    Extent,
     Item,
-    SpatialExtent,
-    TemporalExtent,
 )
 
-import stactools.core.create
+from stactools.overture_maps.metadata import (
+    PYARROW_CONFIGS,
+    CollectionInfo,
+    PartitionInfo,
+    StorageBackend,
+    Theme,
+)
 
 
-def create_collection() -> Collection:
+def create_collection(
+    theme: Theme, storage_backend: StorageBackend, latest_release: str
+) -> Collection:
     """Creates a STAC Collection.
 
     This function should create a collection for this dataset. See `the STAC
@@ -24,18 +27,18 @@ def create_collection() -> Collection:
     Returns:
         Collection: STAC Collection object
     """
-    extent = Extent(
-        SpatialExtent([[-180.0, 90.0, 180.0, -90.0]]),
-        TemporalExtent([[datetime.now(tz=timezone.utc), None]]),
+    pyarrow_config = PYARROW_CONFIGS.get(storage_backend)
+    if not storage_backend:
+        raise ValueError(
+            f"no configuration for this cloud provider: {storage_backend.value}"
+        )
+    collection_config = CollectionInfo(
+        storage_backend=storage_backend,
+        theme=theme,
+        latest_release=latest_release,
     )
+    collection = collection_config.to_collection()
 
-    collection = Collection(
-        id="example-collection",
-        title="Example collection",
-        description="An example collection",
-        extent=extent,
-        extra_fields={"custom_attribute": "foo"},
-    )
     return collection
 
 
@@ -62,7 +65,8 @@ def create_item(asset_href: str) -> Item:
     Returns:
         Item: STAC Item object
     """
-    item = stactools.core.create.item(asset_href)
-    item.id = "example-item"
-    item.properties["custom_attribute"] = "foo"
+    partition_info = PartitionInfo.from_href(asset_href)
+
+    item = partition_info.to_item()
+
     return item

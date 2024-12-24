@@ -6,12 +6,20 @@ from pathlib import Path
 from pystac import CatalogType
 
 import stactools.overture_maps.stac
+from stactools.overture_maps.constants import AZURE_NETLOC
+from stactools.overture_maps.metadata import StorageBackend, Theme
 
 root = Path(__file__).parents[1]
 examples = root / "examples"
 
-collection = stactools.overture_maps.stac.create_collection()
-item = stactools.overture_maps.stac.create_item(str(root / "tests" / "data" / "asset.tif"))
+collection = stactools.overture_maps.stac.create_collection(
+    theme=Theme.BUILDINGS,
+    storage_backend=StorageBackend.AZURE,
+    latest_release="2024-12-18.0",
+)
+item = stactools.overture_maps.stac.create_item(
+    f"https://{AZURE_NETLOC}/release/2024-12-18.0/theme=buildings/type=building/part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.zstd.parquet"
+)
 collection.add_item(item)
 collection.update_extent_from_items()
 collection.normalize_hrefs(str(examples))

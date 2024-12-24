@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir -p tests/data/release/2024-12-18.0/theme=buildings/type=building
+
+duckdb < scripts/generate_test_data.sql
+
+gpq convert /tmp/buildings.zstd.parquet tests/data/release/2024-12-18.0/theme=buildings/type=building/part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.zstd.parquet
+
