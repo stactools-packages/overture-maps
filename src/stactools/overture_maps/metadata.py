@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import Any, Collection, Dict, List, Optional, TypedDict, Union
+from typing import Any, Dict, List, Optional, TypedDict, Union
 from urllib.parse import urlparse
 
 import httpx
@@ -195,7 +195,7 @@ class CollectionInfo:
         )
 
         feature_types_md = "\n".join(
-            f"- {feature_type.value}"
+            f"- {feature_type.value[0]}"
             for feature_type in FeatureType.get_types_for_theme(self.theme)
         )
 
