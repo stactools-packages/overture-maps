@@ -58,7 +58,7 @@ COLLECTION_DESCRIPTION_FORMAT = (
     "metadata for each item (see below).\n\n"
     "## STAC metadata\n\n"
     "The `overture:type` property can be used to filter items to a specific feature "
-    "type, and the `overture:release` property can be used to filter items to a "
+    "type, and the `version` property can be used to filter items to a "
     "specific release.\n\n"
     "## About Overture Maps\n\n"
     "Overture is a collaborative open-data initiative led by software developers, data "

@@ -15,14 +15,13 @@
 - Extra fields:
   - `overture:theme`: Overture Maps theme
   - `overture:type`: Overture Maps feature type
-  - `overture:release`: Overture Maps release
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/overture-maps/main/examples/catalog.json)
 - [Browse a notebook demonstrating the example item and collection](https://github.com/stactools-packages/overture-maps/tree/main/docs/example.ipynb)
 
 This package can be used to generate STAC metadata for the Overture Maps dataset.
 Collections are separated by the Overture 'Themes': Addresses, Base, Buildings, Divisions, Places, and Transportation.
 
-Items represent individual parquet files in object storage and each one will correspond to a single partition for a theme (`overture:theme`), feature type (`overture:type:`), and release (`overture:release`).
+Items represent individual parquet files in object storage and each one will correspond to a single partition for a theme (`overture:theme`), feature type (`overture:type:`), and release (`version`).
 
 Ideally we would include some collection-level assets for the entire `theme/type` table connections, but that will come in a later version of this package.
 
@@ -61,7 +60,7 @@ You can create an item with just the `href` for the parquet asset:
 
 ```bash
 stac overturemaps create-item \
-  https://oveturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=addresses/type=address/part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000.zstd.parquet \
+  https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=addresses/type=address/part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000.zstd.parquet \
   item.json
 ```
 
