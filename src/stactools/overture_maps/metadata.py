@@ -171,7 +171,7 @@ class CollectionInfo:
 
         content = response.text
 
-        pattern = "## Overview\n\n(.*?)\n\n##"
+        pattern = "## Overview\n\n(.*?)(?:\n\n##|\n\n\\|)"
         match = re.search(pattern, content, re.DOTALL)
 
         if match:
