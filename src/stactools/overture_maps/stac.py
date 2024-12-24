@@ -4,7 +4,6 @@ from pystac import (
 )
 
 from stactools.overture_maps.metadata import (
-    PYARROW_CONFIGS,
     CollectionInfo,
     PartitionInfo,
     StorageBackend,
@@ -27,7 +26,6 @@ def create_collection(
     Returns:
         Collection: STAC Collection object
     """
-    pyarrow_config = PYARROW_CONFIGS.get(storage_backend)
     if not storage_backend:
         raise ValueError(
             f"no configuration for this cloud provider: {storage_backend.value}"

@@ -7,9 +7,9 @@ PARTITION_FORMAT = (
     "/release/{release}/theme={theme}/type={type}/part-{part}-{uid}.zstd.parquet"
 )
 COLLECTION_ID_FORMAT = "overture-maps-{theme}"
-
+OVERTURE_GUIDE_FORMAT = "https://docs.overturemaps.org/guides/{theme}/"
 ODBL_LICENSE_ATTRIBUTES = {
     "href": "https://opendatacommons.org/licenses/odbl/1.0/",
-    "title": "ODbL 1.0",
+    "title": "ODbL-1.0",
     "type": "text/html",
 }

@@ -3,28 +3,65 @@
 import shutil
 from pathlib import Path
 
-from pystac import CatalogType
+from pystac import Catalog, CatalogType
 
 import stactools.overture_maps.stac
-from stactools.overture_maps.constants import AZURE_NETLOC
 from stactools.overture_maps.metadata import StorageBackend, Theme
 
 root = Path(__file__).parents[1]
 examples = root / "examples"
 
-collection = stactools.overture_maps.stac.create_collection(
-    theme=Theme.BUILDINGS,
-    storage_backend=StorageBackend.AZURE,
-    latest_release="2024-12-18.0",
-)
-item = stactools.overture_maps.stac.create_item(
-    f"https://{AZURE_NETLOC}/release/2024-12-18.0/theme=buildings/type=building/part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.zstd.parquet"
-)
-collection.add_item(item)
-collection.update_extent_from_items()
-collection.normalize_hrefs(str(examples))
-collection.make_all_asset_hrefs_relative()
 if examples.exists():
     shutil.rmtree(examples)
     examples.mkdir()
-collection.save(CatalogType.SELF_CONTAINED)
+
+AZURE_PREFIX = "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0"
+
+example_params = {
+    Theme.ADDRESSES: [
+        f"{AZURE_PREFIX}/theme=addresses/type=address/part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000.zstd.parquet",
+    ],
+    Theme.BUILDINGS: [
+        f"{AZURE_PREFIX}/theme=buildings/type=building/part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=buildings/type=building_part/part-00000-ecfd20fa-cba1-430d-979d-d75b6d5ef6b2-c000.zstd.parquet",
+    ],
+    Theme.DIVISIONS: [
+        f"{AZURE_PREFIX}/theme=divisions/type=division/part-00000-0e64b561-1627-4112-99b8-f0e3b4d54916-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=divisions/type=division_area/part-00000-3bc3de71-0151-4d7b-b6b6-cf1605c75656-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=divisions/type=division_boundary/part-00000-58d6e82c-f48c-409d-aa36-8581465d6b8f-c000.zstd.parquet",
+    ],
+    Theme.PLACES: [
+        f"{AZURE_PREFIX}/theme=places/type=place/part-00000-13a6583b-537c-465b-81c3-1b27da7ea22b-c000.zstd.parquet",
+    ],
+    Theme.TRANSPORTATION: [
+        f"{AZURE_PREFIX}/theme=transportation/type=segment/part-00000-197fe3eb-5952-413d-99fe-44cdb1365072-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=transportation/type=connector/part-00000-e54d988e-e80b-48dc-8b04-01bdab3f0f84-c000.zstd.parquet",
+    ],
+    Theme.BASE: [
+        f"{AZURE_PREFIX}/theme=base/type=bathymetry/part-00000-525e3c93-96a6-4a98-800c-c775a78ee1c4-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=base/type=infrastructure/part-00000-39d9bb03-cbe8-4be7-ae7e-1950c21757a4-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=base/type=land/part-00000-4abc29a3-e0c9-4f11-bab4-53e38b9f6c5d-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=base/type=land_cover/part-00000-3afdb121-7f1d-4381-97fe-cc4e2c239a59-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=base/type=land_use/part-00000-bf2c0901-35f5-4961-a008-2e76f665d4cf-c000.zstd.parquet",
+        f"{AZURE_PREFIX}/theme=base/type=water/part-00000-a218524c-21b4-4716-9b1f-fa43547d95a3-c000.zstd.parquet",
+    ],
+}
+
+catalog = Catalog(
+    id="overture-maps", description="Overture Maps", title="Overture Maps"
+)
+for theme, hrefs in example_params.items():
+    collection = stactools.overture_maps.stac.create_collection(
+        theme=theme,
+        storage_backend=StorageBackend.AZURE,
+        latest_release="2024-12-18.0",
+    )
+    for href in hrefs:
+        item = stactools.overture_maps.stac.create_item(href)
+        collection.add_item(item)
+    collection.update_extent_from_items()
+    catalog.add_child(collection)
+
+catalog.normalize_hrefs(str(examples))
+catalog.make_all_asset_hrefs_relative()
+catalog.save(CatalogType.SELF_CONTAINED)

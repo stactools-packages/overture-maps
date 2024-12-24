@@ -34,6 +34,7 @@ from stactools.overture_maps.constants import (
     COLLECTION_ID_FORMAT,
     FIRST_RELEASE_DATE,
     ODBL_LICENSE_ATTRIBUTES,
+    OVERTURE_GUIDE_FORMAT,
     PARTITION_FORMAT,
 )
 
@@ -41,6 +42,8 @@ COLLECTION_DESCRIPTION_FORMAT = (
     "## Overture Maps - {theme}\n\n"
     "This collection contains items for the {theme} theme.\n\n"
     "{theme_description}\n\n"
+    "See the official [guide]({guide_url}) for tips on querying and analyzing this "
+    "dataset.\n\n"
     "## Data assets\n\n"
     "The features are provided as a set of "
     "[geoparquet](https://github.com/opengeospatial/geoparquet) datasets. The data "
@@ -48,15 +51,12 @@ COLLECTION_DESCRIPTION_FORMAT = (
     "1. Theme\n2. Type\n\n"
     "Each `(Theme, Type)` pair will have one or more geoparquet files, depending on "
     "the density of the of the features in that area.\n\n"
-    "Note that older items in this dataset (version 2024.02.15-alpha.0 and earier) are "
-    "**not** spatially partitioned. We recommend using data with a release of  "
+    "Note that older items in this dataset (version 2024.02.15-alpha.0 and earlier) "
+    "are **not** spatially partitioned. We recommend using data with a release of  "
     "2023-03-12-alpha.0 or newer. "
     "The release is part of the URL for each parquet file and is captured in the STAC "
     "metadata for each item (see below).\n\n"
     "## STAC metadata\n\n"
-    "This STAC collection has one STAC item per individual parquet file and represents "
-    "the following feature types:\n\n"
-    "{feature_types}\n\n"
     "The `overture:type` property can be used to filter items to a specific feature "
     "type, and the `overture:release` property can be used to filter items to a "
     "specific release.\n\n"
@@ -143,12 +143,12 @@ CLOUD_PROVIDERS = {
 THEME_LICENSES = {
     Theme.ADDRESSES: {
         "href": "https://docs.overturemaps.org/attribution/#addresses",
-        "title": "CC BY 4.0",
+        "title": "various",
         "type": "text/html",
     },
     Theme.PLACES: {
         "href": "https://cdla.dev/permissive-2-0/",
-        "title": "CDLA Permissive 2.0",
+        "title": "CDLA-Permissive-2.0",
         "type": "text/html",
     },
 }
@@ -178,10 +178,13 @@ class CollectionInfo:
             return match.group(1).strip()
         else:
             raise ValueError(
-                f"could not retrive content for the {self.theme.value} theme from {raw_url}"
+                f"could not retrieve content for the {self.theme.value} theme from "
+                + raw_url
             )
 
     def to_collection(self) -> Collection:
+        """Generate a pystac.Collection object for this theme/storage_backend
+        combination"""
         extent = Extent(
             SpatialExtent([[-180.0, 90.0, 180.0, -90.0]]),
             TemporalExtent(
@@ -194,11 +197,6 @@ class CollectionInfo:
             ),
         )
 
-        feature_types_md = "\n".join(
-            f"- {feature_type.value[0]}"
-            for feature_type in FeatureType.get_types_for_theme(self.theme)
-        )
-
         providers = [
             Provider(
                 name="Overture Maps Foundation",
@@ -209,10 +207,17 @@ class CollectionInfo:
         if cloud_provider := CLOUD_PROVIDERS.get(self.storage_backend):
             providers.append(cloud_provider)
 
+        # keywords
         keywords = [
-            feature_type.value[0]
-            for feature_type in FeatureType.get_types_for_theme(self.theme)
+            "overture",
+            "geoparquet",
         ]
+        keywords.extend(
+            [
+                feature_type.value[0]
+                for feature_type in FeatureType.get_types_for_theme(self.theme)
+            ]
+        )
         if self.theme != Theme.BASE:
             keywords.append(self.theme.value)
 
@@ -221,12 +226,15 @@ class CollectionInfo:
             description=COLLECTION_DESCRIPTION_FORMAT.format(
                 theme=self.theme.value,
                 theme_description=self.theme_description,
-                feature_types=feature_types_md,
+                guide_url=OVERTURE_GUIDE_FORMAT.format(theme=self.theme.value),
             ),
             extent=extent,
             license=THEME_LICENSES.get(self.theme, ODBL_LICENSE_ATTRIBUTES)["title"],
             providers=providers,
             keywords=keywords,
+            extra_fields={
+                "overture:theme": self.theme,
+            },
         )
 
         item_assets_ext = ItemAssetsExtension.ext(collection, add_if_missing=True)
@@ -353,11 +361,21 @@ class PartitionInfo:
 
     @property
     def geo_metadata(self) -> Dict[str, Any]:
-        return json.loads(self.metadata.metadata[b"geo"].decode("utf-8"))
+        geo_metadata = json.loads(self.metadata.metadata[b"geo"].decode("utf-8"))
+        if not isinstance(geo_metadata, dict):
+            raise ValueError(f"could not parse geo metadata from {self.href}")
+
+        return geo_metadata
 
     @property
     def bbox(self) -> List[float]:
-        return self.geo_metadata["columns"]["geometry"]["bbox"]
+        bbox: List[float] = self.geo_metadata["columns"]["geometry"]["bbox"]
+        if not all(isinstance(x, float) for x in bbox):
+            raise ValueError(
+                f"could not parse bounding box from {self.href}: {str(bbox)}"
+            )
+
+        return bbox
 
     def to_item(self) -> Item:
         collection = COLLECTION_ID_FORMAT.format(theme=self.theme)
@@ -380,14 +398,14 @@ class PartitionInfo:
             collection=collection,
         )
 
-        # verion extension
+        # version extension
         VersionExtension.ext(item, add_if_missing=True)
         item.ext.version.version = self.release
 
         # table extension
         table.TableExtension.ext(asset, add_if_missing=True)
         if storage_options := PYARROW_CONFIGS.get(self.storage_backend):
-            asset.ext.table.storage_options = storage_options
+            asset.ext.table.storage_options = storage_options  # type: ignore
 
         table.TableExtension.ext(item, add_if_missing=True)
         item.ext.table.row_count = self.metadata.num_rows

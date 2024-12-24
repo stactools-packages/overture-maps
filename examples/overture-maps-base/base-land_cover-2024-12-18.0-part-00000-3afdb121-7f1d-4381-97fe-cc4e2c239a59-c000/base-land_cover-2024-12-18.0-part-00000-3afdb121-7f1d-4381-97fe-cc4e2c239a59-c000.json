@@ -1,0 +1,112 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "base-land_cover-2024-12-18.0-part-00000-3afdb121-7f1d-4381-97fe-cc4e2c239a59-c000",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -180.0002,
+          -80.4636622
+        ],
+        [
+          180.0002,
+          -80.4636622
+        ],
+        [
+          180.0002,
+          71.6123322
+        ],
+        [
+          -180.0002,
+          71.6123322
+        ],
+        [
+          -180.0002,
+          -80.4636622
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -180.0002,
+    -80.4636622,
+    180.0002,
+    71.6123322
+  ],
+  "properties": {
+    "overture:theme": "base",
+    "overture:type": "land_cover",
+    "version": "2024-12-18.0",
+    "table:row_count": 1289009,
+    "table:columns": [
+      {
+        "name": "id",
+        "col_type": "string"
+      },
+      {
+        "name": "geometry",
+        "col_type": "binary"
+      },
+      {
+        "name": "bbox",
+        "col_type": "struct"
+      },
+      {
+        "name": "version",
+        "col_type": "integer"
+      },
+      {
+        "name": "sources",
+        "col_type": "array"
+      },
+      {
+        "name": "cartography",
+        "col_type": "struct"
+      },
+      {
+        "name": "subtype",
+        "col_type": "string"
+      }
+    ],
+    "table:primary_geometry": "Polygon",
+    "datetime": "2024-01-18T00:12:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=base/type=land_cover/part-00000-3afdb121-7f1d-4381-97fe-cc4e2c239a59-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "table:storage_options": {
+        "anon": true,
+        "account_name": "overturemapswestus2"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "overture-maps-base"
+}

@@ -1,0 +1,160 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "divisions-division-2024-12-18.0-part-00000-0e64b561-1627-4112-99b8-f0e3b4d54916-c000",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -179.9411131,
+          -89.998
+        ],
+        [
+          179.990617,
+          -89.998
+        ],
+        [
+          179.990617,
+          82.4989872
+        ],
+        [
+          -179.9411131,
+          82.4989872
+        ],
+        [
+          -179.9411131,
+          -89.998
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -179.9411131,
+    -89.998,
+    179.990617,
+    82.4989872
+  ],
+  "properties": {
+    "overture:theme": "divisions",
+    "overture:type": "division",
+    "version": "2024-12-18.0",
+    "table:row_count": 4336281,
+    "table:columns": [
+      {
+        "name": "id",
+        "col_type": "string"
+      },
+      {
+        "name": "geometry",
+        "col_type": "binary"
+      },
+      {
+        "name": "bbox",
+        "col_type": "struct"
+      },
+      {
+        "name": "country",
+        "col_type": "string"
+      },
+      {
+        "name": "version",
+        "col_type": "integer"
+      },
+      {
+        "name": "sources",
+        "col_type": "array"
+      },
+      {
+        "name": "subtype",
+        "col_type": "string"
+      },
+      {
+        "name": "class",
+        "col_type": "string"
+      },
+      {
+        "name": "names",
+        "col_type": "struct"
+      },
+      {
+        "name": "wikidata",
+        "col_type": "string"
+      },
+      {
+        "name": "perspectives",
+        "col_type": "struct"
+      },
+      {
+        "name": "local_type",
+        "col_type": "map"
+      },
+      {
+        "name": "region",
+        "col_type": "string"
+      },
+      {
+        "name": "hierarchies",
+        "col_type": "array"
+      },
+      {
+        "name": "parent_division_id",
+        "col_type": "string"
+      },
+      {
+        "name": "norms",
+        "col_type": "struct"
+      },
+      {
+        "name": "population",
+        "col_type": "integer"
+      },
+      {
+        "name": "capital_division_ids",
+        "col_type": "array"
+      },
+      {
+        "name": "capital_of_divisions",
+        "col_type": "array"
+      }
+    ],
+    "table:primary_geometry": "Point",
+    "datetime": "2024-01-18T00:12:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=divisions/type=division/part-00000-0e64b561-1627-4112-99b8-f0e3b4d54916-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "table:storage_options": {
+        "anon": true,
+        "account_name": "overturemapswestus2"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "overture-maps-divisions"
+}

@@ -1,0 +1,94 @@
+{
+  "type": "Collection",
+  "id": "overture-maps-buildings",
+  "stac_version": "1.0.0",
+  "description": "## Overture Maps - buildings\n\nThis collection contains items for the buildings theme.\n\nThe Overture Maps buildings theme describes human-made structures with roofs or interior spaces that are permanently or semi-permanently in one place (source: [OSM building definition](https://wiki.openstreetmap.org/wiki/Key:building)). The theme includes two feature types:\n\n- **`building`**: The most basic form of a building feature. The geometry is expected to be the most outer footprint&mdash;roofprint if traced from satellite/aerial imagery&mdash;of a building. Buildings have a boolean attribute `has_parts` that describe whether there are any associated building parts.\n- **`building_part`**: A single part of a building. Building parts may share the same properties as buildings. A building part is associated with a parent building via a `building_id`.\n\nSee the official [guide](https://docs.overturemaps.org/guides/buildings/) for tips on querying and analyzing this dataset.\n\n## Data assets\n\nThe features are provided as a set of [geoparquet](https://github.com/opengeospatial/geoparquet) datasets. The data are partitioned by\n\n1. Theme\n2. Type\n\nEach `(Theme, Type)` pair will have one or more geoparquet files, depending on the density of the of the features in that area.\n\nNote that older items in this dataset (version 2024.02.15-alpha.0 and earier) are **not** spatially partitioned. We recommend using data with a release of  2023-03-12-alpha.0 or newer. The release is part of the URL for each parquet file and is captured in the STAC metadata for each item (see below).\n\n## STAC metadata\n\nThe `overture:type` property can be used to filter items to a specific feature type, and the `overture:release` property can be used to filter items to a specific release.\n\n## About Overture Maps\n\nOverture is a collaborative open-data initiative led by software developers, data experts,cartographic engineers, and product managers from dozens of Overture Maps Foundation member companies. Since our launch in December 2022, Overture members have been working toward a shared vision: to create reliable, user-friendly, and interoperable open map data that supports both current and future map products. We envision a world where shared, open base layers drive collaboration and innovation across industries and communities.\n\nFor more information, visit the [Overture Maps Foundation](https://overturemaps.org/).\n\n",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "license",
+      "href": "https://opendatacommons.org/licenses/odbl/1.0/",
+      "type": "text/html",
+      "title": "ODbL-1.0"
+    },
+    {
+      "rel": "item",
+      "href": "./buildings-building-2024-12-18.0-part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000/buildings-building-2024-12-18.0-part-00000-35685b01-5d46-4cb5-8449-5b27bcbfe445-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./buildings-building_part-2024-12-18.0-part-00000-ecfd20fa-cba1-430d-979d-d75b6d5ef6b2-c000/buildings-building_part-2024-12-18.0-part-00000-ecfd20fa-cba1-430d-979d-d75b6d5ef6b2-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+  ],
+  "overture:theme": "buildings",
+  "item_assets": {
+    "data": {
+      "title": "Geoparquet partition",
+      "description": "Geoparquet partition",
+      "type": "application/x-parquet",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.9999966,
+          -83.6500139,
+          177.4527618,
+          78.2382991
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-18T00:12:00Z",
+          "2024-01-18T00:12:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "ODbL-1.0",
+  "keywords": [
+    "overture",
+    "geoparquet",
+    "building",
+    "building_part",
+    "buildings"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://overturemaps.org/"
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "host"
+      ],
+      "url": "https://microsoft.com"
+    }
+  ]
+}

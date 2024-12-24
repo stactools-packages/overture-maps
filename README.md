@@ -65,12 +65,3 @@ If you've updated the STAC metadata output, update the examples:
 ```shell
 uv run scripts/update-examples
 ```
-
-To update the test data:
-
-- install [`gpq`](https://github.com/planetlabs/gpq)
-- install [`duckdb`](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=linux&download_method=direct&architecture=x86_64)
-
-```bash
-scripts/generate-test-data 
-```

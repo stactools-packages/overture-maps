@@ -1,0 +1,104 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "transportation-connector-2024-12-18.0-part-00000-e54d988e-e80b-48dc-8b04-01bdab3f0f84-c000",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -85.0511284
+        ],
+        [
+          -5.6391533,
+          -85.0511284
+        ],
+        [
+          -5.6391533,
+          44.9999737
+        ],
+        [
+          -180.0,
+          44.9999737
+        ],
+        [
+          -180.0,
+          -85.0511284
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -180.0,
+    -85.0511284,
+    -5.6391533,
+    44.9999737
+  ],
+  "properties": {
+    "overture:theme": "transportation",
+    "overture:type": "connector",
+    "version": "2024-12-18.0",
+    "table:row_count": 26357134,
+    "table:columns": [
+      {
+        "name": "id",
+        "col_type": "string"
+      },
+      {
+        "name": "geometry",
+        "col_type": "binary"
+      },
+      {
+        "name": "bbox",
+        "col_type": "struct"
+      },
+      {
+        "name": "version",
+        "col_type": "integer"
+      },
+      {
+        "name": "sources",
+        "col_type": "array"
+      }
+    ],
+    "table:primary_geometry": "Point",
+    "datetime": "2024-01-18T00:12:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=transportation/type=connector/part-00000-e54d988e-e80b-48dc-8b04-01bdab3f0f84-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "table:storage_options": {
+        "anon": true,
+        "account_name": "overturemapswestus2"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "overture-maps-transportation"
+}
