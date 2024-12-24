@@ -9,9 +9,11 @@ number as needed.
 
 ## [Unreleased]
 
+## [0.1.0]
+
 ### Added
 
-- Nothing.
+- Initial attempt at representing Overture Maps data in STAC!
 
 ### Deprecated
 
@@ -25,4 +27,5 @@ number as needed.
 
 - Nothing.
 
+[0.1.0]: <https://github.com/stactools-packages/overture-maps/tree/v0.1.0/>
 [Unreleased]: <https://github.com/stactools-packages/overture-maps/tree/main/>

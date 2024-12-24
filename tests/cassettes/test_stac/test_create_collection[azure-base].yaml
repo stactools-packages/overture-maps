@@ -1,0 +1,89 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - raw.githubusercontent.com
+      user-agent:
+      - python-httpx/0.28.1
+    method: GET
+    uri: https://raw.githubusercontent.com/OvertureMaps/docs/refs/heads/main/docs/guides/base.mdx
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA41VTW/bMAy951cQ6KU14uSenbauhwEresiAHopiVmQm1iZLgign9X79SNnNRz9z
+        KWyXfI98fGTKspwkkywu4JsinNRIOpqQjHcL+OHWUVGKnU5dxCn8VK4e/nY0vmq/xTgFfoJ7lTDC
+        GpUE02xSMvTk4gLuOGJrcDeZ/Gowv0kA3KpAsGJOSA22CCH6rWF6eQWbmXaCOICbk1L2LBysEij+
+        4lAjkYo9JA8RXc21KNC+DRYTZqJWhRlIDa3646NJPfi1sNERHifwW/Qt3AV0yxQR063k3SNoq4jM
+        uoe75e0hwzgmLFIfsJhCQd1qfJSqi5xSZPYavBM2EyGpDQ2VSJ850mtUDoK3/cY7yh1xB2bLabka
+        EeXhu+qt2TQJrj1rYY1DerxsUgq0mM/r8Z/SpY+bud7HzPijvRoIB62N07YTrdfM8NwKSOG0mExK
+        KIrqVPCqKF7a4aAAdboBlbVrO2e0EvfwGHYYKTeXq5hCMPxhEGYVTb0R/tdKD/QiTCYNTU8MaXmm
+        gcnQpQxPMrusHnVxrXj2r/Uyjr3Gw+VImdhBtC+QonJk2V4ETrpgfBnKx/X8zmbPVZ1wPdwsv8K9
+        j7a+loDDSJBUuZPvOTFPBd3VFBqeU8nNeNtlqTzvm7R4o2JqwK+IF2YQsVZJHVfAe5f5RyuOWtNo
+        ZGi6ll3UDT0rINQD/iDVSdt22GJp+/2u8wJ+OgbjXti4VZFl3k/mTbklOsPvVP++9nI/lpo9q1hy
+        MhsHuvGGMcWlvFVGv5BC6jldzUpsXU2hGlezytRVTqtg1yBbWQW+PiEarkc6DyqScZsc6HxslTX/
+        9ujicn4SR0nZ0739K95t3r8RHy1WgoVP3Lw+JDsylFi+twB25q+RiVdyw5IPpcUtWrmMgY+myUcV
+        ahN5rFwjUZma6LtNI8iRNTJOqo5MvVVHDCcyRlxzx06jKPhw8xSsj/ksAA0Bax/H7Xlr2/OReLyc
+        D8HzPdpcTtz8NOdq9glFts1ZwBJ5HlxetfNBh50+D7qjM2V4XtVPYXfHP5kfY+ZQBvwPMhDarLEH
+        AAA=
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - max-age=300
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '800'
+      Content-Security-Policy:
+      - default-src 'none'; style-src 'unsafe-inline'; sandbox
+      Content-Type:
+      - text/plain; charset=utf-8
+      Cross-Origin-Resource-Policy:
+      - cross-origin
+      Date:
+      - Tue, 24 Dec 2024 12:39:19 GMT
+      ETag:
+      - W/"dfd16e9b7df150b316ac1bc38705342c9367e6dabe65ecd691908087b95908d3"
+      Expires:
+      - Tue, 24 Dec 2024 12:44:19 GMT
+      Source-Age:
+      - '203'
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Authorization,Accept-Encoding,Origin
+      Via:
+      - 1.1 varnish
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Content-Type-Options:
+      - nosniff
+      X-Fastly-Request-ID:
+      - bce4ef99a234bcf10a9886fcb76e511ba9bc15ed
+      X-Frame-Options:
+      - deny
+      X-GitHub-Request-Id:
+      - 3C3A:39D5C8:E09A29:FA797F:676A97B8
+      X-Served-By:
+      - cache-msp11871-MSP
+      X-Timer:
+      - S1735043959.258038,VS0,VE0
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

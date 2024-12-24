@@ -1,0 +1,88 @@
+{
+  "type": "Collection",
+  "id": "overture-maps-addresses",
+  "stac_version": "1.0.0",
+  "description": "## Overture Maps - addresses\n\nThis collection contains items for the addresses theme.\n\n_Note: This theme is currently in Alpha and we anticipate significant changes over the next several releases. We invite the Overture community to test the addresses schema and data and offer feedback via the [data](https://github.com/OvertureMaps/data/issues) and [schema](https://github.com/OvertureMaps/schema/issues) repos._\n\nOverture maintains nearly 394 million address point entities. Data in the address theme is derived from over 60 sources, many distributed by [OpenAddresses](https://openaddresses.io/) and [AddressForAll](https://www.addressforall.org/en/), but also includes open data from the [City of New York](https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k) and the [U.S. Department of Transportation](https://www.transportation.gov/gis/national-address-database).\n\nFor licensing information, please see the [Attribution and Licensing page](https://docs.overturemaps.org/attribution/).\n\nAddress data can be used for a variety of purposes, which can include:\n\n- **Mapping**: Addresses may be displayed on the map for reference purposes.\n- **Geocoding**: Addresses are a primary component of high-accuracy geocoding services (i.e. converting text for an address to a complete address with a location).\n- **Conflation**: Addresses can be used to conflate to other data themes (e.g. places, buildings) where appropriate for mapping or other use cases (e.g. refining search).\n- **Standardization**: Parsing an input address into address components based on an existing schema or address model.\n- **Normalization**: Adhering to standard and consistent forms of address components.\n- **Validation and Verification**: Confirming an address exists within a known list of addresses.\n\nSee the official [guide](https://docs.overturemaps.org/guides/addresses/) for tips on querying and analyzing this dataset.\n\n## Data assets\n\nThe features are provided as a set of [geoparquet](https://github.com/opengeospatial/geoparquet) datasets. The data are partitioned by\n\n1. Theme\n2. Type\n\nEach `(Theme, Type)` pair will have one or more geoparquet files, depending on the density of the of the features in that area.\n\nNote that older items in this dataset (version 2024.02.15-alpha.0 and earlier) are **not** spatially partitioned. We recommend using data with a release of  2023-03-12-alpha.0 or newer. The release is part of the URL for each parquet file and is captured in the STAC metadata for each item (see below).\n\n## STAC metadata\n\nThe `overture:type` property can be used to filter items to a specific feature type, and the `version` property can be used to filter items to a specific release.\n\n## About Overture Maps\n\nOverture is a collaborative open-data initiative led by software developers, data experts,cartographic engineers, and product managers from dozens of Overture Maps Foundation member companies. Since our launch in December 2022, Overture members have been working toward a shared vision: to create reliable, user-friendly, and interoperable open map data that supports both current and future map products. We envision a world where shared, open base layers drive collaboration and innovation across industries and communities.\n\nFor more information, visit the [Overture Maps Foundation](https://overturemaps.org/).\n\n",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "license",
+      "href": "https://docs.overturemaps.org/attribution/#addresses",
+      "type": "text/html",
+      "title": "various"
+    },
+    {
+      "rel": "item",
+      "href": "./addresses-address-2024-12-18.0-part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000/addresses-address-2024-12-18.0-part-00000-de803747-d78d-4060-b3da-da6dcd5dbab8-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+  ],
+  "overture:theme": "addresses",
+  "item_assets": {
+    "data": {
+      "title": "Geoparquet partition",
+      "description": "Geoparquet partition",
+      "type": "application/x-parquet",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -176.874527,
+          -53.234018,
+          -45.000027,
+          -17.522077
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-18T00:12:00Z",
+          "2024-01-18T00:12:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "various",
+  "keywords": [
+    "overture",
+    "geoparquet",
+    "address",
+    "addresses"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://overturemaps.org/"
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "host"
+      ],
+      "url": "https://microsoft.com"
+    }
+  ]
+}

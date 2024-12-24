@@ -1,0 +1,136 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "base-infrastructure-2024-12-18.0-part-00000-39d9bb03-cbe8-4be7-ae7e-1950c21757a4-c000",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -179.9999994,
+          -89.9918427
+        ],
+        [
+          -2.8247289,
+          -89.9918427
+        ],
+        [
+          -2.8247289,
+          78.7980429
+        ],
+        [
+          -179.9999994,
+          78.7980429
+        ],
+        [
+          -179.9999994,
+          -89.9918427
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -179.9999994,
+    -89.9918427,
+    -2.8247289,
+    78.7980429
+  ],
+  "properties": {
+    "overture:theme": "base",
+    "overture:type": "infrastructure",
+    "version": "2024-12-18.0",
+    "table:row_count": 14314331,
+    "table:columns": [
+      {
+        "name": "id",
+        "col_type": "string"
+      },
+      {
+        "name": "geometry",
+        "col_type": "binary"
+      },
+      {
+        "name": "bbox",
+        "col_type": "struct"
+      },
+      {
+        "name": "version",
+        "col_type": "integer"
+      },
+      {
+        "name": "sources",
+        "col_type": "array"
+      },
+      {
+        "name": "level",
+        "col_type": "integer"
+      },
+      {
+        "name": "subtype",
+        "col_type": "string"
+      },
+      {
+        "name": "class",
+        "col_type": "string"
+      },
+      {
+        "name": "height",
+        "col_type": "double"
+      },
+      {
+        "name": "surface",
+        "col_type": "string"
+      },
+      {
+        "name": "names",
+        "col_type": "struct"
+      },
+      {
+        "name": "source_tags",
+        "col_type": "map"
+      },
+      {
+        "name": "wikidata",
+        "col_type": "string"
+      }
+    ],
+    "table:primary_geometry": "Point",
+    "datetime": "2024-01-18T00:12:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=base/type=infrastructure/part-00000-39d9bb03-cbe8-4be7-ae7e-1950c21757a4-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "table:storage_options": {
+        "anon": true,
+        "account_name": "overturemapswestus2"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "overture-maps-base"
+}

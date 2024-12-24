@@ -53,6 +53,6 @@ jobs:
       - name: Update Conda's environemnt
         run: conda env update -f environment.yml -n test
       - name: Install package
-        run: uv sync
+        run: uv sync --all-extras
       - name: Execute linters and test suites
         run: uv run ./scripts/test

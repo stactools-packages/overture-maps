@@ -1,0 +1,94 @@
+{
+  "type": "Collection",
+  "id": "overture-maps-transportation",
+  "stac_version": "1.0.0",
+  "description": "## Overture Maps - transportation\n\nThis collection contains items for the transportation theme.\n\nimport DocCardList from '@theme/DocCardList';\n\nThe Overture transportation theme is the collection of LineString and Point features that describe the infrastructure and conventions of how people and objects travel around the world. The dataset contains two features types: `connector` and `segment`. The three subtypes within `segment` -- `road`, `rail`, and `water` -- contain familiar categories of transportation data: highways, footways, cycleways, railways, ferry routes, and public transportation. \n\nMost of the data in the transportation theme is sourced from OpenStreetMap. In the `2024-09-18.0` [release](/release), we began adding data from TomTom to improve coverage in key areas. \n\nYou might use the Overture transportation data for:\n\n- **mapping:** rendering a map of connected roads and paths.\n- **routing:** calculating optimal routes from place to place.\n- **navigation:** generating granular instructions on the maneuvers needed to\n  follow a route.\n- **analytics:** transportation-related analysis including traffic safety\n  analysis and disaster planning.\n- **geocoding:** getting the coordinates of street intersections (geocodes) or\n  the street intersection near specific coordinates (reverse geocodes).\n\nThis guide is an overview of the transportation data. To dig into the details of the schema, see the [schema concepts for transportation](/schema/concepts/by-theme/transportation) and the reference documentation for the [segment](/schema/reference/transportation/segment) and [connector](/schema/reference/transportation/connector) feature types.\n\nSee the official [guide](https://docs.overturemaps.org/guides/transportation/) for tips on querying and analyzing this dataset.\n\n## Data assets\n\nThe features are provided as a set of [geoparquet](https://github.com/opengeospatial/geoparquet) datasets. The data are partitioned by\n\n1. Theme\n2. Type\n\nEach `(Theme, Type)` pair will have one or more geoparquet files, depending on the density of the of the features in that area.\n\nNote that older items in this dataset (version 2024.02.15-alpha.0 and earlier) are **not** spatially partitioned. We recommend using data with a release of  2023-03-12-alpha.0 or newer. The release is part of the URL for each parquet file and is captured in the STAC metadata for each item (see below).\n\n## STAC metadata\n\nThe `overture:type` property can be used to filter items to a specific feature type, and the `version` property can be used to filter items to a specific release.\n\n## About Overture Maps\n\nOverture is a collaborative open-data initiative led by software developers, data experts,cartographic engineers, and product managers from dozens of Overture Maps Foundation member companies. Since our launch in December 2022, Overture members have been working toward a shared vision: to create reliable, user-friendly, and interoperable open map data that supports both current and future map products. We envision a world where shared, open base layers drive collaboration and innovation across industries and communities.\n\nFor more information, visit the [Overture Maps Foundation](https://overturemaps.org/).\n\n",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "license",
+      "href": "https://opendatacommons.org/licenses/odbl/1.0/",
+      "type": "text/html",
+      "title": "ODbL-1.0"
+    },
+    {
+      "rel": "item",
+      "href": "./transportation-segment-2024-12-18.0-part-00000-197fe3eb-5952-413d-99fe-44cdb1365072-c000/transportation-segment-2024-12-18.0-part-00000-197fe3eb-5952-413d-99fe-44cdb1365072-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./transportation-connector-2024-12-18.0-part-00000-e54d988e-e80b-48dc-8b04-01bdab3f0f84-c000/transportation-connector-2024-12-18.0-part-00000-e54d988e-e80b-48dc-8b04-01bdab3f0f84-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+  ],
+  "overture:theme": "transportation",
+  "item_assets": {
+    "data": {
+      "title": "Geoparquet partition",
+      "description": "Geoparquet partition",
+      "type": "application/x-parquet",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -85.0511284,
+          0.0647969,
+          44.9999737
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-18T00:12:00Z",
+          "2024-01-18T00:12:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "ODbL-1.0",
+  "keywords": [
+    "overture",
+    "geoparquet",
+    "segment",
+    "connector",
+    "transportation"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://overturemaps.org/"
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "host"
+      ],
+      "url": "https://microsoft.com"
+    }
+  ]
+}

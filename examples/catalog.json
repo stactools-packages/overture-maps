@@ -1,0 +1,45 @@
+{
+  "type": "Catalog",
+  "id": "overture-maps",
+  "stac_version": "1.0.0",
+  "description": "Overture Maps",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-addresses/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-buildings/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-divisions/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-places/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-transportation/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./overture-maps-base/collection.json",
+      "type": "application/json"
+    }
+  ],
+  "title": "Overture Maps"
+}

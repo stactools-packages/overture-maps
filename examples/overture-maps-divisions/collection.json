@@ -1,0 +1,100 @@
+{
+  "type": "Collection",
+  "id": "overture-maps-divisions",
+  "stac_version": "1.0.0",
+  "description": "## Overture Maps - divisions\n\nThis collection contains items for the divisions theme.\n\nThe Overture divisions theme has three feature types: `division`, `division_area`, and `division_boundary`.\n\nThere are more than 5.3 million point, line, and polygon representations of human settlements, such as countries, regions, states, cities, and even neighborhoods. The theme is derived from a conflation of [OpenStreetMap](https://www.openstreetmap.org/) data and [geoBoundaries](https://www.geoboundaries.org/) data and is available under an [ODbL](https://opendatacommons.org/licenses/odbl/) license. (See the [attribution page](https://docs.overturemaps.org/attribution/) for more information.)\n\nDivisions data can be used for many purposes, which can include, but are not limited to:\n- reverse-geocoding\n- cartographic styling and map rendering\n- place labels\n- choropleth rendering\n- containment checks (e.g. point-in-polygon analysis)\n- choosing a geometry based on your use case\n\nSee the official [guide](https://docs.overturemaps.org/guides/divisions/) for tips on querying and analyzing this dataset.\n\n## Data assets\n\nThe features are provided as a set of [geoparquet](https://github.com/opengeospatial/geoparquet) datasets. The data are partitioned by\n\n1. Theme\n2. Type\n\nEach `(Theme, Type)` pair will have one or more geoparquet files, depending on the density of the of the features in that area.\n\nNote that older items in this dataset (version 2024.02.15-alpha.0 and earlier) are **not** spatially partitioned. We recommend using data with a release of  2023-03-12-alpha.0 or newer. The release is part of the URL for each parquet file and is captured in the STAC metadata for each item (see below).\n\n## STAC metadata\n\nThe `overture:type` property can be used to filter items to a specific feature type, and the `version` property can be used to filter items to a specific release.\n\n## About Overture Maps\n\nOverture is a collaborative open-data initiative led by software developers, data experts,cartographic engineers, and product managers from dozens of Overture Maps Foundation member companies. Since our launch in December 2022, Overture members have been working toward a shared vision: to create reliable, user-friendly, and interoperable open map data that supports both current and future map products. We envision a world where shared, open base layers drive collaboration and innovation across industries and communities.\n\nFor more information, visit the [Overture Maps Foundation](https://overturemaps.org/).\n\n",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "license",
+      "href": "https://opendatacommons.org/licenses/odbl/1.0/",
+      "type": "text/html",
+      "title": "ODbL-1.0"
+    },
+    {
+      "rel": "item",
+      "href": "./divisions-division-2024-12-18.0-part-00000-0e64b561-1627-4112-99b8-f0e3b4d54916-c000/divisions-division-2024-12-18.0-part-00000-0e64b561-1627-4112-99b8-f0e3b4d54916-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./divisions-division_area-2024-12-18.0-part-00000-3bc3de71-0151-4d7b-b6b6-cf1605c75656-c000/divisions-division_area-2024-12-18.0-part-00000-3bc3de71-0151-4d7b-b6b6-cf1605c75656-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./divisions-division_boundary-2024-12-18.0-part-00000-58d6e82c-f48c-409d-aa36-8581465d6b8f-c000/divisions-division_boundary-2024-12-18.0-part-00000-58d6e82c-f48c-409d-aa36-8581465d6b8f-c000.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+  ],
+  "overture:theme": "divisions",
+  "item_assets": {
+    "data": {
+      "title": "Geoparquet partition",
+      "description": "Geoparquet partition",
+      "type": "application/x-parquet",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -89.998,
+          180.0,
+          83.875172
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-18T00:12:00Z",
+          "2024-01-18T00:12:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "ODbL-1.0",
+  "keywords": [
+    "overture",
+    "geoparquet",
+    "division",
+    "division_area",
+    "division_boundary",
+    "divisions"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://overturemaps.org/"
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "host"
+      ],
+      "url": "https://microsoft.com"
+    }
+  ]
+}

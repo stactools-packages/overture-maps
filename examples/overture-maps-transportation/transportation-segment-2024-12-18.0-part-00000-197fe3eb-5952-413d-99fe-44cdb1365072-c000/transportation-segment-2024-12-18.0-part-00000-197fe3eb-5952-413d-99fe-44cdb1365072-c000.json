@@ -1,0 +1,164 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "transportation-segment-2024-12-18.0-part-00000-197fe3eb-5952-413d-99fe-44cdb1365072-c000",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -85.0511284
+        ],
+        [
+          0.0647969,
+          -85.0511284
+        ],
+        [
+          0.0647969,
+          -0.2021015
+        ],
+        [
+          -180.0,
+          -0.2021015
+        ],
+        [
+          -180.0,
+          -85.0511284
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -180.0,
+    -85.0511284,
+    0.0647969,
+    -0.2021015
+  ],
+  "properties": {
+    "overture:theme": "transportation",
+    "overture:type": "segment",
+    "version": "2024-12-18.0",
+    "table:row_count": 6189697,
+    "table:columns": [
+      {
+        "name": "id",
+        "col_type": "string"
+      },
+      {
+        "name": "geometry",
+        "col_type": "binary"
+      },
+      {
+        "name": "bbox",
+        "col_type": "struct"
+      },
+      {
+        "name": "version",
+        "col_type": "integer"
+      },
+      {
+        "name": "sources",
+        "col_type": "array"
+      },
+      {
+        "name": "subtype",
+        "col_type": "string"
+      },
+      {
+        "name": "class",
+        "col_type": "string"
+      },
+      {
+        "name": "names",
+        "col_type": "struct"
+      },
+      {
+        "name": "connectors",
+        "col_type": "array"
+      },
+      {
+        "name": "routes",
+        "col_type": "array"
+      },
+      {
+        "name": "subclass",
+        "col_type": "string"
+      },
+      {
+        "name": "subclass_rules",
+        "col_type": "array"
+      },
+      {
+        "name": "access_restrictions",
+        "col_type": "array"
+      },
+      {
+        "name": "level_rules",
+        "col_type": "array"
+      },
+      {
+        "name": "destinations",
+        "col_type": "array"
+      },
+      {
+        "name": "prohibited_transitions",
+        "col_type": "array"
+      },
+      {
+        "name": "road_surface",
+        "col_type": "array"
+      },
+      {
+        "name": "road_flags",
+        "col_type": "array"
+      },
+      {
+        "name": "speed_limits",
+        "col_type": "array"
+      },
+      {
+        "name": "width_rules",
+        "col_type": "array"
+      }
+    ],
+    "table:primary_geometry": "LineString",
+    "datetime": "2024-01-18T00:12:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json",
+      "title": "Overture Maps"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://overturemapswestus2.blob.core.windows.net/release/2024-12-18.0/theme=transportation/type=segment/part-00000-197fe3eb-5952-413d-99fe-44cdb1365072-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "table:storage_options": {
+        "anon": true,
+        "account_name": "overturemapswestus2"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "overture-maps-transportation"
+}
